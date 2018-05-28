@@ -18,7 +18,11 @@
 		<maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
 		<!-- 以下为依赖包版本定义属性 -->
 		<junit.version>4.12</junit.version>
-		<spring.version>5.0.6.RELEASE</spring.version>
+		<spring.version>5.0.3.RELEASE</spring.version>
+		<servlet.version>4.0.1</servlet.version>
+		<jsp.version>2.2</jsp.version>
+		<jstl.version>1.2</jstl.version>
+		<annotations-api.version>9.0.8</annotations-api.version>
 	</properties>
 	<dependencyManagement>
 		<dependencies>
@@ -48,6 +52,33 @@
 				<artifactId>spring-context-support</artifactId>
 				<version>${spring.version}</version>
 			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-test</artifactId>
+				<version>${spring.version}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>javax.servlet.jsp</groupId>
+				<artifactId>jsp-api</artifactId>
+				<version>${jsp.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>javax.servlet</groupId>
+				<artifactId>javax.servlet-api</artifactId>
+				<version>${servlet.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>javax.servlet</groupId>
+				<artifactId>jstl</artifactId>
+				<version>${jstl.version}</version>
+			</dependency>
+			<dependency>
+			    <groupId>org.apache.tomcat</groupId>
+			    <artifactId>tomcat-annotations-api</artifactId>
+			    <version>${annotations-api.version}</version>
+			</dependency>
+			
 		</dependencies>
 	</dependencyManagement>
 	<build>
