@@ -1,14 +1,14 @@
 package cn.mldn.mldnspring.vo;
 
-import java.beans.ConstructorProperties;
 import java.io.Serializable;
-import java.util.Properties;
 
 @SuppressWarnings("serial")
 public class Dept implements Serializable {
 	private Long deptno ;
 	private String dname ;
-	
+	public Dept() {
+		System.out.println("*************** 实例化Dept类对象 ***************");
+	}
 	public Long getDeptno() {
 		return deptno;
 	}
@@ -23,6 +23,6 @@ public class Dept implements Serializable {
 	}
 	@Override
 	public String toString() {
-		return "deptno = " + this.deptno + "、dname = " + this.dname;
+		return "【" + super.toString() + "】deptno = " + this.deptno + "、dname = " + this.dname;
 	}
 }

@@ -3,17 +3,10 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:p="http://www.springframework.org/schema/p" 
 	xsi:schemaLocation="http://www.springframework.org/schema/beans 
-	http://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
-	<bean id="emp" class="cn.mldn.mldnspring.vo.Emp" autowire="byType"> 
-		<property name="empno" value="7369"/>
-		<property name="ename" value="SMITH"/>
-	</bean> 
-	<bean id="dept" class="cn.mldn.mldnspring.vo.Dept" autowire-candidate="false"> 
+	http://www.springframework.org/schema/beans/spring-beans-4.3.xsd"> 
+	<bean id="dept" class="cn.mldn.mldnspring.vo.Dept" scope="singleton" lazy-init="true"> 
 		<property name="deptno" value="10"/>
 		<property name="dname" value="财务部"/>
-	</bean> 
-	<bean id="hello" class="cn.mldn.mldnspring.vo.Dept">
-		<property name="deptno" value="20"/>
-		<property name="dname" value="技术部"/>
-	</bean> 
-</beans>
+	</bean>  
+	<bean id="message" class="cn.mldn.mldnspring.vo.Message" init-method="createChannel" destroy-method="closeChannel"/>
+</beans> 
