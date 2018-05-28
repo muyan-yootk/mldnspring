@@ -1,5 +1,6 @@
 package cn.mldn.mldnspring.vo;
 
+import java.beans.ConstructorProperties;
 import java.io.Serializable;
 import java.util.Properties;
 
@@ -7,14 +8,11 @@ import java.util.Properties;
 public class Dept implements Serializable {
 	private Long deptno ;
 	private String dname ;
-	private Properties infos ;
-	public void setInfos(Properties infos) {
-		this.infos = infos;
+	@ConstructorProperties(value= {"pdeptno","pdname"})
+	public Dept(Long deptno,String dname) {
+		this.deptno = deptno ;
+		this.dname = dname ;
 	}
-	public Properties getInfos() {
-		return infos;
-	}
-	
 	public Long getDeptno() {
 		return deptno;
 	}

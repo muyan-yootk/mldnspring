@@ -20,7 +20,5 @@ public class TestDept {
 	@Test
 	public void testValue() {
 		System.out.println(this.dept);
-		System.out.println(this.dept.getInfos().getClass());
-		System.out.println(this.dept.getInfos());
 	}
 }
