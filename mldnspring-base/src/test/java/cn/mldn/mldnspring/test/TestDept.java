@@ -1,5 +1,7 @@
 package cn.mldn.mldnspring.test;
 
+import java.util.Map;
+
 import javax.annotation.Resource;
 
 import org.junit.Test;
@@ -19,8 +21,8 @@ public class TestDept {
 	public void testValue() {
 		System.out.println(this.dept);
 		System.out.println(this.dept.getEmps().getClass());
-		for (Emp emp : this.dept.getEmps()) {
-			System.out.println(emp);
+		for (Map.Entry<String, Emp> entry : this.dept.getEmps().entrySet()) {
+			System.out.println(entry.getKey() + " = " + entry.getValue());
 		}
 	}
 }

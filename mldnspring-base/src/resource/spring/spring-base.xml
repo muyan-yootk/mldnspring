@@ -38,27 +38,15 @@
 		</property>
 		<property name="dept" ref="dept"/>
 	</bean>
-	<bean id="empD" class="cn.mldn.mldnspring.vo.Emp">
-		<!-- 对于此时的属性要求只有定义了setter方法之后才可以进行配置 -->
-		<property name="empno" value="7788"/>	<!-- 此处设置的是一个字符串 -->
-		<property name="ename" value="KING"/> 
-		<property name="age" value="30"/>	<!-- 此处设置的是一个字符串 -->
-		<property name="salary" value="789.99"/>
-		<property name="hiredate">	<!-- 直接配置一个内部的Bean类 -->
-			<bean class="java.util.Date"/>			
-		</property>
-		<property name="dept" ref="dept"/>
-	</bean>
 	<bean id="dept" class="cn.mldn.mldnspring.vo.Dept">
 		<property name="deptno" value="10"/>
 		<property name="dname" value="财务部"/>
 		<property name="emps">
-			<set>	<!-- 注入的是一个Emp对象数组 -->
-				<ref bean="empA"/>
-				<ref bean="empB"/>
-				<ref bean="empC"/> 
-				<ref bean="empD"/> 
-			</set>
+			<map>
+				<entry key="emp-a" value-ref="empA"/>
+				<entry key="emp-b" value-ref="empB"/>
+				<entry key="emp-c" value-ref="empC"/>
+			</map>
 		</property> 
 	</bean>
 

@@ -1,19 +1,20 @@
 package cn.mldn.mldnspring.vo;
 
 import java.io.Serializable;
+import java.util.Map;
 import java.util.Set;
 
 @SuppressWarnings("serial")
 public class Dept implements Serializable {
 	private Long deptno ;
 	private String dname ;
-	private Set<Emp> emps ;
-	public void setEmps(Set<Emp> emps) {
+	private Map<String,Emp> emps ;
+	public void setEmps(Map<String, Emp> emps) {
 		this.emps = emps;
 	}
-	public Set<Emp> getEmps() {
+	public Map<String, Emp> getEmps() {
 		return emps;
-	}
+	} 
 	
 	public Long getDeptno() {
 		return deptno;
