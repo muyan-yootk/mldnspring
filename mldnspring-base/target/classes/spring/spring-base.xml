@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
+	<!-- 在Spring容器之中配置一个程序类（配置的是完整的“包.类”名称，一定采用的是反射） -->
+	<!-- 在每一个bean配置之中都提供有一个id的属性，该属性为Spring的查找名称 -->
+	<bean id="messageImpl" class="cn.mldn.mldnspring.service.impl.MessageImpl"/>
+
+</beans>
