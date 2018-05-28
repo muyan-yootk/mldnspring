@@ -7,15 +7,19 @@ import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import cn.mldn.mldnspring.service.IDeptService;
 import cn.mldn.mldnspring.vo.Dept;
 
 @ContextConfiguration(locations= {"classpath:spring/spring-base.xml"})
 @RunWith(SpringJUnit4ClassRunner.class)
-public class TestDept {
+public class TestDeptService {
 	@Resource
-	private Dept dept ;
+	private IDeptService deptService ;
 	@Test
-	public void testValue() {
-		System.out.println(this.dept);
+	public void testAdd() {
+		Dept vo = new Dept() ;
+		vo.setDeptno(99L);
+		vo.setDname("开发部");
+		System.out.println(this.deptService.add(vo));
 	}
 }
