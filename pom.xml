@@ -1,0 +1,70 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>cn.mldn</groupId>
+	<artifactId>mldnspring</artifactId>
+	<version>0.0.1</version>
+	<packaging>pom</packaging>
+
+	<name>mldnspring</name>
+	<url>http://maven.apache.org</url>
+
+	<properties>
+		<!-- 以下为Maven环境定义属性 -->
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<jdk.version>1.8</jdk.version>
+		<maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
+		<!-- 以下为依赖包版本定义属性 -->
+		<junit.version>4.12</junit.version>
+		<spring.version>5.0.6.RELEASE</spring.version>
+	</properties>
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>junit</groupId>
+				<artifactId>junit</artifactId>
+				<version>${junit.version}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-context</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-core</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-beans</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-context-support</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${maven-compiler-plugin.version}</version>
+				<configuration>
+					<source>${jdk.version}</source><!-- 源代码使用的开发版本 -->
+					<target>${jdk.version}</target><!-- 需要生成的目标class文件的编译版本 -->
+					<encode>${project.build.sourceEncoding}</encode>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+	<modules>
+		<module>mldnspring-base</module>
+	</modules>
+</project>
