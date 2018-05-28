@@ -8,11 +8,7 @@ import java.util.Properties;
 public class Dept implements Serializable {
 	private Long deptno ;
 	private String dname ;
-	@ConstructorProperties(value= {"pdeptno","pdname"})
-	public Dept(Long deptno,String dname) {
-		this.deptno = deptno ;
-		this.dname = dname ;
-	}
+	
 	public Long getDeptno() {
 		return deptno;
 	}

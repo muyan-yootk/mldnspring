@@ -4,43 +4,16 @@
 	xmlns:p="http://www.springframework.org/schema/p" 
 	xsi:schemaLocation="http://www.springframework.org/schema/beans 
 	http://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
-	<!-- 进行指定类型的Bean对象实例化处理操作，容器启动的时候会自动进行对象实例化 -->
-	<bean id="empA" class="cn.mldn.mldnspring.vo.Emp">
-		<!-- 对于此时的属性要求只有定义了setter方法之后才可以进行配置 -->
-		<property name="empno" value="7369"/>	<!-- 此处设置的是一个字符串 -->
+	<bean id="emp" class="cn.mldn.mldnspring.vo.Emp" autowire="byType"> 
+		<property name="empno" value="7369"/>
 		<property name="ename" value="SMITH"/>
-		<property name="age" value="30"/>	<!-- 此处设置的是一个字符串 -->
-		<property name="salary" value="789.99"/>
-		<property name="hiredate">	<!-- 直接配置一个内部的Bean类 -->
-			<bean class="java.util.Date"/>			
-		</property>
-		<property name="dept" ref="dept"/>
 	</bean> 
-	<bean id="empB" class="cn.mldn.mldnspring.vo.Emp">
-		<!-- 对于此时的属性要求只有定义了setter方法之后才可以进行配置 -->
-		<property name="empno" value="7566"/>	<!-- 此处设置的是一个字符串 -->
-		<property name="ename" value="ALLEN"/>
-		<property name="age" value="30"/>	<!-- 此处设置的是一个字符串 -->
-		<property name="salary" value="789.99"/>
-		<property name="hiredate">	<!-- 直接配置一个内部的Bean类 -->
-			<bean class="java.util.Date"/>			
-		</property>
-		<property name="dept" ref="dept"/>
-	</bean>
-	<bean id="empC" class="cn.mldn.mldnspring.vo.Emp">
-		<!-- 对于此时的属性要求只有定义了setter方法之后才可以进行配置 -->
-		<property name="empno" value="7788"/>	<!-- 此处设置的是一个字符串 -->
-		<property name="ename" value="KING"/> 
-		<property name="age" value="30"/>	<!-- 此处设置的是一个字符串 -->
-		<property name="salary" value="789.99"/>
-		<property name="hiredate">	<!-- 直接配置一个内部的Bean类 -->
-			<bean class="java.util.Date"/>			
-		</property>
-		<property name="dept" ref="dept"/>
-	</bean>
-	<bean id="dept" class="cn.mldn.mldnspring.vo.Dept">
-		<constructor-arg name="pdeptno" value="10"/>
-		<constructor-arg name="pdname" value="财务部"/>
-	</bean>
-
+	<bean id="dept" class="cn.mldn.mldnspring.vo.Dept" autowire-candidate="false"> 
+		<property name="deptno" value="10"/>
+		<property name="dname" value="财务部"/>
+	</bean> 
+	<bean id="hello" class="cn.mldn.mldnspring.vo.Dept">
+		<property name="deptno" value="20"/>
+		<property name="dname" value="技术部"/>
+	</bean> 
 </beans>
