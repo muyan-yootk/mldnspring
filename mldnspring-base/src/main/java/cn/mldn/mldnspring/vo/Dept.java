@@ -6,6 +6,13 @@ import java.io.Serializable;
 public class Dept implements Serializable {
 	private Long deptno ;
 	private String dname ;
+	private Emp [] emps ;
+	public void setEmps(Emp[] emps) {
+		this.emps = emps;
+	}
+	public Emp[] getEmps() {
+		return emps;
+	}
 	public Long getDeptno() {
 		return deptno;
 	}
