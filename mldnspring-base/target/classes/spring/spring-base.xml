@@ -42,12 +42,12 @@
 		<property name="deptno" value="10"/>
 		<property name="dname" value="财务部"/>
 		<property name="emps">
-			<array>	<!-- 注入的是一个Emp对象数组 -->
+			<list>	<!-- 注入的是一个Emp对象数组 -->
 				<ref bean="empA"/>
 				<ref bean="empB"/>
 				<ref bean="empC"/> 
-			</array>
-		</property>
+			</list>
+		</property> 
 	</bean>
 
 </beans>

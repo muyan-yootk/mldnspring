@@ -18,6 +18,7 @@ public class TestDept {
 	@Test
 	public void testValue() {
 		System.out.println(this.dept);
+		System.out.println(this.dept.getEmps().getClass());
 		for (Emp emp : this.dept.getEmps()) {
 			System.out.println(emp);
 		}
