@@ -41,12 +41,11 @@
 	<bean id="dept" class="cn.mldn.mldnspring.vo.Dept">
 		<property name="deptno" value="10"/>
 		<property name="dname" value="财务部"/>
-		<property name="emps">
-			<map>
-				<entry key="emp-a" value-ref="empA"/>
-				<entry key="emp-b" value-ref="empB"/>
-				<entry key="emp-c" value-ref="empC"/>
-			</map>
+		<property name="infos"> 
+			<props>
+				<prop key="hello">世界，你好！</prop>			
+				<prop key="mldn">www.mldn.cn</prop>			
+			</props>
 		</property> 
 	</bean>
 

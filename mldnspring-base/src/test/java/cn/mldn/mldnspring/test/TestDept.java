@@ -20,9 +20,7 @@ public class TestDept {
 	@Test
 	public void testValue() {
 		System.out.println(this.dept);
-		System.out.println(this.dept.getEmps().getClass());
-		for (Map.Entry<String, Emp> entry : this.dept.getEmps().entrySet()) {
-			System.out.println(entry.getKey() + " = " + entry.getValue());
-		}
+		System.out.println(this.dept.getInfos().getClass());
+		System.out.println(this.dept.getInfos());
 	}
 }
