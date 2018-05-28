@@ -2,7 +2,12 @@ package cn.mldn.mldnspring.vo;
 
 import java.io.Serializable;
 
+import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Service;
+
 @SuppressWarnings("serial")
+// <bean id="dept" class="cn.mldn.mldnspring.vo.Dept"/>
+@Controller
 public class Dept implements Serializable {
 	private Long deptno ;
 	private String dname ;
