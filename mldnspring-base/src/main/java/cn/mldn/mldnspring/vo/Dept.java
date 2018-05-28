@@ -1,17 +1,17 @@
 package cn.mldn.mldnspring.vo;
 
 import java.io.Serializable;
-import java.util.List;
+import java.util.Set;
 
 @SuppressWarnings("serial")
 public class Dept implements Serializable {
 	private Long deptno ;
 	private String dname ;
-	private List<Emp> emps ;
-	public void setEmps(List<Emp> emps) {
+	private Set<Emp> emps ;
+	public void setEmps(Set<Emp> emps) {
 		this.emps = emps;
 	}
-	public List<Emp> getEmps() {
+	public Set<Emp> getEmps() {
 		return emps;
 	}
 	
