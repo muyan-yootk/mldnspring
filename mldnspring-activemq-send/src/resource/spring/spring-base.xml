@@ -21,9 +21,9 @@
 		<property name="targetConnectionFactory" ref="targetConnectionFactory"/>
 	</bean>
 	<!-- 3、有了连接的相关信息之后还需要配置发送的目的地 -->
-	<bean id="destination" class="org.apache.activemq.command.ActiveMQQueue">
-		<constructor-arg value="${activemq.queue.name}"/>
-	</bean>
+	<bean id="destination" class="org.apache.activemq.command.ActiveMQTopic">
+		<constructor-arg value="${activemq.topic.name}"/>
+	</bean> 
 	<!-- 定义JMS的发送的数据的模版类 -->
 	<bean id="jmsTemplate" class="org.springframework.jms.core.JmsTemplate">
 		<property name="connectionFactory" ref="connectionFactory"/>

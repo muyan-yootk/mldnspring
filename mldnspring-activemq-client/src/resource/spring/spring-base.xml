@@ -21,9 +21,9 @@
 		<property name="targetConnectionFactory" ref="targetConnectionFactory"/>
 	</bean>
 	<!-- 3、有了连接的相关信息之后还需要配置发送的目的地 -->
-	<bean id="destination" class="org.apache.activemq.command.ActiveMQQueue">
-		<constructor-arg value="${activemq.queue.name}"/>
-	</bean>
+	<bean id="destination" class="org.apache.activemq.command.ActiveMQTopic">
+		<constructor-arg value="${activemq.topic.name}"/>
+	</bean> 
 	<!-- 4、进行消息接收的监听程序的配置处理 -->
 	<bean id="jmsContainer" class="org.springframework.jms.listener.DefaultMessageListenerContainer">
 		<property name="connectionFactory" ref="connectionFactory"/>
