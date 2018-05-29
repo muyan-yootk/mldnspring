@@ -9,4 +9,5 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">  
 	<context:component-scan base-package="cn.mldn.mldnspring"/>	<!-- 定义扫描包 -->
 	<task:annotation-driven/>	<!-- 启用Annotation的SpringTask配置支持 -->	
+	<task:scheduler id="schedulePool" pool-size="2"/>
 </beans>
