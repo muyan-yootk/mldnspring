@@ -8,11 +8,8 @@
 		http://www.springframework.org/schema/context 
 		http://www.springframework.org/schema/context/spring-context-4.3.xsd">  
 	<context:component-scan base-package="cn.mldn.mldnspring"/>	<!-- 定义扫描包 -->
-	<bean id="resourceUtil" class="cn.mldn.mldnspring.util.ResourceUtil">
-		<property name="resources">
-			<list>
-				<value>classpath*:**/META-INF/**/*.MF</value>
-			</list>
-		</property>
-	</bean> 
+	<bean id="item" class="cn.mldn.mldnspring.vo.Item">
+		<property name="title" value="#{'www.mldn.cn'.substring(4,8)}"/>
+		<property name="createDate" value="#{new java.util.Date()}"/>
+	</bean>
 </beans> 
