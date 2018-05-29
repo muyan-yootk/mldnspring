@@ -9,8 +9,8 @@
 		<artifactId>mldnspring</artifactId>
 		<version>0.0.1</version>
 	</parent>
-	<artifactId>mldnspring-base</artifactId>
-	<name>mldnspring-base</name>
+	<artifactId>mldnspring-activemq-client</artifactId>
+	<name>mldnspring-activemq-client</name>
 	<url>http://maven.apache.org</url>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -66,5 +66,18 @@
 			<groupId>org.apache.tomcat</groupId>
 			<artifactId>tomcat-annotations-api</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>org.apache.activemq</groupId>
+			<artifactId>activemq-all</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>javax.jms</groupId>
+			<artifactId>jms</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jms</artifactId>
+		</dependency>
+
 	</dependencies>
 </project>

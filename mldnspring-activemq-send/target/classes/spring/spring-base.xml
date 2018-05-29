@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:task="http://www.springframework.org/schema/task"
+	xsi:schemaLocation="http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-4.3.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">  
+	<context:component-scan base-package="cn.mldn.mldnspring"/>	<!-- 定义扫描包 -->
+	<!-- 配置资源项加载完成之后就可以在配置文件里面利用资源的key结合SpEL获取对应的value -->
+	<context:property-placeholder location="classpath:config/*.properties"/>	<!-- 加载所有的资源配置项 -->
+	<!-- 1、配置一个AcitveMQ的连接工厂定义 -->
+	<bean id="targetConnectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
+		<property name="brokerURL" value="${activemq.broker.url}"/>
+		<property name="userName" value="${activemq.user.name}"/>
+		<property name="password" value="${activemq.user.password}"/>
+	</bean>
+	<!-- 2、定义连接工厂类，配置Spring-JMS的相关信息 -->
+	<bean id="connectionFactory" class="org.springframework.jms.connection.SingleConnectionFactory">
+		<property name="targetConnectionFactory" ref="targetConnectionFactory"/>
+	</bean>
+	<!-- 3、有了连接的相关信息之后还需要配置发送的目的地 -->
+	<bean id="destination" class="org.apache.activemq.command.ActiveMQTopic">
+		<constructor-arg value="${activemq.topic.name}"/>
+	</bean> 
+	<!-- 定义JMS的发送的数据的模版类 -->
+	<bean id="jmsTemplate" class="org.springframework.jms.core.JmsTemplate">
+		<property name="connectionFactory" ref="connectionFactory"/>
+	</bean>  
+</beans>

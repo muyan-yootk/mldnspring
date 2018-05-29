@@ -23,9 +23,28 @@
 		<jsp.version>2.2</jsp.version>
 		<jstl.version>1.2</jstl.version>
 		<annotations-api.version>9.0.8</annotations-api.version>
+		<quartz.version>2.3.0</quartz.version>
+		<activemq.version>5.15.4</activemq.version>
+		<jms.version>1.1</jms.version>
 	</properties>
 	<dependencyManagement>
 		<dependencies>
+			<dependency>
+				<groupId>org.apache.activemq</groupId>
+				<artifactId>activemq-all</artifactId>
+				<version>${activemq.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>javax.jms</groupId>
+				<artifactId>jms</artifactId>
+				<version>${jms.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-jms</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+
 			<dependency>
 				<groupId>junit</groupId>
 				<artifactId>junit</artifactId>
@@ -74,11 +93,21 @@
 				<version>${jstl.version}</version>
 			</dependency>
 			<dependency>
-			    <groupId>org.apache.tomcat</groupId>
-			    <artifactId>tomcat-annotations-api</artifactId>
-			    <version>${annotations-api.version}</version>
+				<groupId>org.apache.tomcat</groupId>
+				<artifactId>tomcat-annotations-api</artifactId>
+				<version>${annotations-api.version}</version>
 			</dependency>
-			
+			<dependency>
+				<groupId>org.quartz-scheduler</groupId>
+				<artifactId>quartz</artifactId>
+				<version>${quartz.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-tx</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+
 		</dependencies>
 	</dependencyManagement>
 	<build>
@@ -97,5 +126,7 @@
 	</build>
 	<modules>
 		<module>mldnspring-base</module>
+		<module>mldnspring-activemq-send</module>
+		<module>mldnspring-activemq-client</module>
 	</modules>
 </project>
