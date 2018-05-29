@@ -8,10 +8,5 @@
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">  
 	<context:component-scan base-package="cn.mldn.mldnspring"/>	<!-- 定义扫描包 -->
-	<!-- 为了清晰可见，将Mytask类作为一个单独的bean定义， 如果不定义也可以利用Component自动配置完成 -->
-	<bean id="myTask" class="cn.mldn.mldnspring.task.MyTask"/>
-	<task:scheduled-tasks>	<!-- 定义任务调度管理 -->
-		<!-- <task:scheduled ref="myTask" method="runTask" fixed-rate="1000"/> -->
-		<task:scheduled ref="myTask" method="runTask" cron="* * * * * ?"/>
-	</task:scheduled-tasks>
+	<task:annotation-driven/>	<!-- 启用Annotation的SpringTask配置支持 -->	
 </beans>
