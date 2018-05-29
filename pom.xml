@@ -127,5 +127,6 @@
 	<modules>
 		<module>mldnspring-base</module>
 		<module>mldnspring-activemq-send</module>
+		<module>mldnspring-activemq-client</module>
 	</modules>
 </project>
