@@ -12,9 +12,15 @@
 	<bean id="schedulerFactory" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
 		<property name="triggers">	<!-- 配置要使用的定时调度器 -->
 			<array>
-				<ref bean="simpleTrigger"/> 
+				<ref bean="cronTrigger"/> 
 			</array>
 		</property>
+	</bean>
+	
+	<!-- 2、配置CRON定时触发器，可以直接设置一个CRON表达式 -->
+	<bean id="cronTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="taskFactory"/>
+		<property name="cronExpression" value="* * * * * ?"/>	<!-- 每分钟触发一次 -->
 	</bean>
 	
 	<!-- 2、配置一个任务的触发器，本次将使用间隔触发器 -->
