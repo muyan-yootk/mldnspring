@@ -8,8 +8,29 @@
 		http://www.springframework.org/schema/context 
 		http://www.springframework.org/schema/context/spring-context-4.3.xsd">  
 	<context:component-scan base-package="cn.mldn.mldnspring"/>	<!-- 定义扫描包 -->
-	<bean id="item" class="cn.mldn.mldnspring.vo.Item">
-		<property name="title" value="#{'www.mldn.cn'.substring(4,8)}"/>
-		<property name="createDate" value="#{new java.util.Date()}"/>
+	<!-- 3、配置任务调度器，定义任务调度工厂 -->
+	<bean id="schedulerFactory" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="triggers">	<!-- 配置要使用的定时调度器 -->
+			<array>
+				<ref bean="simpleTrigger"/> 
+			</array>
+		</property>
+	</bean>
+	
+	<!-- 2、配置一个任务的触发器，本次将使用间隔触发器 -->
+	<bean id="simpleTrigger" class="org.springframework.scheduling.quartz.SimpleTriggerFactoryBean">
+		<property name="jobDetail" ref="taskFactory"/>	<!-- 定义任务的执行 -->
+		<property name="repeatInterval" value="1000"/>	<!-- 每秒执行一次 -->
+	</bean> 
+	
+	<!-- 1、定义一个任务的调度工厂类的配置，在这个工厂类里面可以进行任务类的指定 -->
+	<bean id="taskFactory" class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+		<!-- 定义任务工厂类之中的任务处理类型，设置的字符串将自动转为Class对象 -->
+		<property name="jobClass" value="cn.mldn.mldnspring.task.MyTask"/>
+		<property name="jobDataMap">	<!-- 配置一些任务执行的相关属性 -->
+			<map>
+				<entry key="timeout" value="0"/>	<!-- 不延迟启动，直接使用 -->
+			</map>
+		</property>
 	</bean>
 </beans> 
