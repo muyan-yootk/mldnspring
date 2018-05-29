@@ -1,29 +1,19 @@
 package cn.mldn.mldnspring.util;
 
+import java.util.List;
+
 import org.springframework.core.io.Resource;
 
 public class ResourceUtil {
-	private Resource fileResource ; 	// 读取文件
-	private Resource classPathResource ; // CLASSPATH读取
-	private Resource urlResource ; // 网络资源读取
+	private List<Resource> resources ; 	// 一组资源的注入
 	// setter、getter略
-	public Resource getFileResource() {
-		return fileResource;
+
+	public List<Resource> getResources() {
+		return resources;
 	}
-	public void setFileResource(Resource fileResource) {
-		this.fileResource = fileResource;
-	}
-	public Resource getClassPathResource() {
-		return classPathResource;
-	}
-	public void setClassPathResource(Resource classPathResource) {
-		this.classPathResource = classPathResource;
-	}
-	public Resource getUrlResource() {
-		return urlResource;
-	}
-	public void setUrlResource(Resource urlResource) {
-		this.urlResource = urlResource;
+
+	public void setResources(List<Resource> resources) {
+		this.resources = resources;
 	}
 	
 }

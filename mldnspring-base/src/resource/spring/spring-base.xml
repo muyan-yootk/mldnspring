@@ -9,8 +9,12 @@
 		http://www.springframework.org/schema/context/spring-context-4.3.xsd">  
 	<context:component-scan base-package="cn.mldn.mldnspring"/>	<!-- 定义扫描包 -->
 	<bean id="resourceUtil" class="cn.mldn.mldnspring.util.ResourceUtil">
-		<property name="fileResource" value="file:d:/info.txt"/>
-		<property name="urlResource" value="https://docs.spring.io/spring/docs/5.0.6.RELEASE/javadoc-api/"/>
-		<property name="classPathResource" value="classpath:spring/spring-base.xml"/>
+		<property name="resources">
+			<list>
+				<value>file:d:/info.txt</value>
+				<value>https://docs.spring.io/spring/docs/5.0.6.RELEASE/javadoc-api/</value>
+				<value>classpath:spring/spring-base.xml</value>
+			</list>
+		</property>
 	</bean> 
 </beans> 

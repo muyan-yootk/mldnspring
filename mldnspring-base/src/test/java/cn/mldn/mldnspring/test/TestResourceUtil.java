@@ -1,5 +1,6 @@
 package cn.mldn.mldnspring.test;
 
+import java.util.Iterator;
 import java.util.Scanner;
 
 import org.junit.Test;
@@ -17,16 +18,11 @@ public class TestResourceUtil {
 	@Autowired
 	private ResourceUtil resourceUtil ;
 	@Test
-	public void testFile() throws Exception {
-		this.outputResource(this.resourceUtil.getFileResource());
-	}
-	@Test 
-	public void testUrl() throws Exception {
-		this.outputResource(this.resourceUtil.getUrlResource());
-	}
-	@Test
-	public void testClassPath() throws Exception {
-		this.outputResource(this.resourceUtil.getClassPathResource());
+	public void testOut() throws Exception {
+		Iterator<Resource> iter = this.resourceUtil.getResources().iterator() ;
+		while (iter.hasNext()) {
+			this.outputResource(iter.next());
+		}
 	}
 	
 	private void outputResource(Resource resource) throws Exception {
