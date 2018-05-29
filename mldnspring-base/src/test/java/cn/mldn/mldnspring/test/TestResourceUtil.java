@@ -19,9 +19,9 @@ public class TestResourceUtil {
 	private ResourceUtil resourceUtil ;
 	@Test
 	public void testOut() throws Exception {
-		Iterator<Resource> iter = this.resourceUtil.getResources().iterator() ;
-		while (iter.hasNext()) {
-			this.outputResource(iter.next());
+		for (Resource resource : this.resourceUtil.getResources()) {
+			this.outputResource(resource);
+			System.err.println("---------------------------------------------------");
 		}
 	}
 	

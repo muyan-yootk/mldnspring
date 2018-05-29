@@ -11,9 +11,7 @@
 	<bean id="resourceUtil" class="cn.mldn.mldnspring.util.ResourceUtil">
 		<property name="resources">
 			<list>
-				<value>file:d:/info.txt</value>
-				<value>https://docs.spring.io/spring/docs/5.0.6.RELEASE/javadoc-api/</value>
-				<value>classpath:spring/spring-base.xml</value>
+				<value>classpath*:**/META-INF/**/*.MF</value>
 			</list>
 		</property>
 	</bean> 

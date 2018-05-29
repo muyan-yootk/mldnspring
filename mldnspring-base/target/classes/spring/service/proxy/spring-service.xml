@@ -11,7 +11,7 @@
 	<bean id="resourceUtil" class="cn.mldn.mldnspring.util.ResourceUtil">
 		<property name="resources">
 			<list>
-				<value>classpath*:**/META-INF/**/*.MF</value>
+				<value>classpath:spring/spring-*.xml</value>
 			</list>
 		</property>
 	</bean> 
