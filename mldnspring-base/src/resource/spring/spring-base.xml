@@ -19,6 +19,12 @@
 			<aop:before method="handleBefore" arg-names="vo"
 				pointcut="execution(public * cn.mldn..service..*.*(..)) and args(vo)"/>
 			<aop:after method="handleAfter" pointcut-ref="myPointcut"/>
+			<!-- 进行后置方法调用返回结果的通知处理操作 -->
+			<aop:after-returning method="handleReturn" pointcut-ref="myPointcut"
+				returning="val" arg-names="val"/>
+			<!-- 方法调用产生异常时的通知处理 -->
+			<aop:after-throwing method="handleThrow" pointcut-ref="myPointcut"
+				throwing="e" arg-names="e"/> 
 		</aop:aspect>
 	</aop:config>
 </beans>

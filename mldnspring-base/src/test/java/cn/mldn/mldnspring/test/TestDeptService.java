@@ -16,6 +16,6 @@ public class TestDeptService {
 	private IDeptService deptService ;
 	@Test
 	public void testAdd() {
-		System.out.println(this.deptService.add(new Dept()));
+		System.out.println(this.deptService.add(null));
 	}
 }
