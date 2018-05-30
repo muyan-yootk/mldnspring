@@ -16,6 +16,7 @@
 		<!-- 定义一个切入点表达式，用于进行切面的定义 -->
 		<aop:pointcut expression="execution(public * cn.mldn..service..*.*(..))" id="myPointcut"/>
 		<aop:aspect ref="serviceAdivce">	<!-- 定义有各个切入点的处理 -->
+			<aop:around method="handleAround" pointcut-ref="myPointcut"/>
 			<aop:before method="handleBefore" arg-names="vo"
 				pointcut="execution(public * cn.mldn..service..*.*(..)) and args(vo)"/>
 			<aop:after method="handleAfter" pointcut-ref="myPointcut"/>
