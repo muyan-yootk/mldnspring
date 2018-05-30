@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>cn.mldn</groupId>
@@ -26,9 +28,26 @@
 		<activemq.version>5.15.4</activemq.version>
 		<jms.version>1.1</jms.version>
 		<mldnspring.version>0.0.1</mldnspring.version>
+		<cxf.version>3.2.4</cxf.version>
 	</properties>
 	<dependencyManagement>
 		<dependencies>
+			<dependency>
+				<groupId>org.apache.cxf</groupId>
+				<artifactId>cxf-rt-frontend-jaxws</artifactId>
+				<version>${cxf.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.cxf</groupId>
+				<artifactId>cxf-rt-transports-http</artifactId>
+				<version>${cxf.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.cxf</groupId>
+				<artifactId>cxf-rt-transports-http-jetty</artifactId>
+				<version>${cxf.version}</version>
+			</dependency>
+
 			<dependency>
 				<groupId>cn.mldn</groupId>
 				<artifactId>mldnspring-ws-api</artifactId>
@@ -59,7 +78,7 @@
 				<artifactId>spring-aspects</artifactId>
 				<version>${spring.version}</version>
 			</dependency>
-			
+
 
 			<dependency>
 				<groupId>junit</groupId>
@@ -144,6 +163,6 @@
 		<module>mldnspring-base</module>
 		<module>mldnspring-ws-api</module>
 		<module>mldnspring-ws-provider</module>
-    <module>mldnspring-ws-consumer</module>
-  </modules>
+		<module>mldnspring-ws-consumer</module>
+	</modules>
 </project>
