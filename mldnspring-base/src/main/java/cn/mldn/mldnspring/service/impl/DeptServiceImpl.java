@@ -1,13 +1,15 @@
 package cn.mldn.mldnspring.service.impl;
 
+import org.springframework.stereotype.Service;
+
 import cn.mldn.mldnspring.service.IDeptService;
 import cn.mldn.mldnspring.vo.Dept;
-
+@Service
 public class DeptServiceImpl implements IDeptService {
 
 	@Override
 	public boolean add(Dept vo) {
-		// 3、调用数据层所提供的数据增加方法或者是其它的数据操作方法
+		System.out.println("【DeptService】实现部门数据增加。");
 		return false;
 	}
 

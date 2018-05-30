@@ -4,10 +4,20 @@
 	xmlns:p="http://www.springframework.org/schema/p"
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:task="http://www.springframework.org/schema/task"
+	xmlns:aop="http://www.springframework.org/schema/aop"
 	xsi:schemaLocation="http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-4.3.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
-		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">  
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">  
 	<context:component-scan base-package="cn.mldn.mldnspring"/>	<!-- 定义扫描包 -->
-	<task:annotation-driven/>	<!-- 启用Annotation的SpringTask配置支持 -->	
-	<task:scheduler id="schedulePool" pool-size="2"/>
+	<!-- 为了配置清晰可见，将对应的AOP的处理类直接以Bean的形式进行了定义 -->
+	<bean id="serviceAdivce" class="cn.mldn.mldnspring.aop.service.ServiceAdvice"/>
+	<aop:config>	<!-- 进行aop的相关配置定义 -->
+		<!-- 定义一个切入点表达式，用于进行切面的定义 -->
+		<aop:pointcut expression="execution(public * cn.mldn..service..*.*(..))" id="myPointcut"/>
+		<aop:aspect ref="serviceAdivce">	<!-- 定义有各个切入点的处理 -->
+			<aop:before method="handleBefore" pointcut-ref="myPointcut"/>
+			<aop:after method="handleAfter" pointcut-ref="myPointcut"/>
+		</aop:aspect>
+	</aop:config>
 </beans>
