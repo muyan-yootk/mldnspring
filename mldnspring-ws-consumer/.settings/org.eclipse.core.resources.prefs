@@ -1,0 +1,8 @@
+eclipse.preferences.version=1
+encoding//src/main/java=UTF-8
+encoding//src/main/java/cn/mldn/mldnspring/service/IMessageService.java=UTF-8
+encoding//src/main/java/cn/mldn/mldnspring/service/impl/MessageService.java=UTF-8
+encoding//src/main/java/cn/mldn/mldnspring/service/impl/MessageServiceImplPortBindingStub.java=UTF-8
+encoding//src/main/java/cn/mldn/mldnspring/service/impl/MessageServiceLocator.java=UTF-8
+encoding//src/test/java=UTF-8
+encoding/<project>=UTF-8
