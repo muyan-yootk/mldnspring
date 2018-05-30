@@ -10,22 +10,5 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">  
 	<context:component-scan base-package="cn.mldn.mldnspring"/>	<!-- 定义扫描包 -->
-	<!-- 为了配置清晰可见，将对应的AOP的处理类直接以Bean的形式进行了定义 -->
-	<bean id="serviceAdivce" class="cn.mldn.mldnspring.aop.service.ServiceAdvice"/>
-	<aop:config>	<!-- 进行aop的相关配置定义 -->
-		<!-- 定义一个切入点表达式，用于进行切面的定义 -->
-		<aop:pointcut expression="execution(public * cn.mldn..service..*.*(..))" id="myPointcut"/>
-		<aop:aspect ref="serviceAdivce">	<!-- 定义有各个切入点的处理 -->
-			<aop:around method="handleAround" pointcut-ref="myPointcut"/>
-			<aop:before method="handleBefore" arg-names="vo"
-				pointcut="execution(public * cn.mldn..service..*.*(..)) and args(vo)"/>
-			<aop:after method="handleAfter" pointcut-ref="myPointcut"/>
-			<!-- 进行后置方法调用返回结果的通知处理操作 -->
-			<aop:after-returning method="handleReturn" pointcut-ref="myPointcut"
-				returning="val" arg-names="val"/>
-			<!-- 方法调用产生异常时的通知处理 -->
-			<aop:after-throwing method="handleThrow" pointcut-ref="myPointcut"
-				throwing="e" arg-names="e"/> 
-		</aop:aspect>
-	</aop:config>
+	<aop:aspectj-autoproxy/> <!-- 启用AOP的Annotation支持 -->
 </beans>
