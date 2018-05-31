@@ -11,6 +11,11 @@
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">  
 	<context:component-scan base-package="cn.mldn.mldnspring"/>	<!-- 定义扫描包 -->
 	<context:property-placeholder location="classpath:config/*.properties"/>
+	<!-- 定义事务处理子类，该事务处理主要是针对于数据源完成的控制 -->
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource"/>	<!-- 引入已经存在的DataSource -->
+	</bean> 
+	
 	
 	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
 		<property name="driverClass" value="${datasource.driverclass}"/>
