@@ -4,7 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import cn.mldn.mldnspring.vo.Emp;
 import cn.mldn.util.action.AbstractAction;
@@ -17,9 +17,8 @@ public class EmpAction extends AbstractAction {
 		return "/pages/emp/input.jsp" ; 
 	}
 	@PostMapping("show")
-	public ModelAndView show(Emp emp) {
-		System.out.println(emp);
-		System.out.println(emp.getDept());
-		return null ; 
-	} 
+	@ResponseBody
+	public Object show(Emp emp) {
+		return emp ;  
+	}  
 }
