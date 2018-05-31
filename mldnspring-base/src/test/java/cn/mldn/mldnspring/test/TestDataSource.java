@@ -1,21 +1,20 @@
 package cn.mldn.mldnspring.test;
 
+import javax.sql.DataSource;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import cn.mldn.mldnspring.service.IDeptService;
-import cn.mldn.mldnspring.vo.Dept;
-
 @ContextConfiguration(locations= {"classpath:spring/spring-base.xml"})
 @RunWith(SpringJUnit4ClassRunner.class)
-public class TestDeptService {
+public class TestDataSource {
 	@Autowired
-	private IDeptService deptService ;
+	private DataSource dataSource ;	// 直接注入的是数据源
 	@Test
-	public void testAdd() {
-		System.out.println(this.deptService.add(null));
+	public void testJDBC() throws Exception {
+		System.out.println(dataSource.getConnection());
 	}
 }
