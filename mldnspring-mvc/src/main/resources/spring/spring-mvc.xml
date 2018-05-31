@@ -15,6 +15,17 @@
 	<mvc:annotation-driven/>	<!-- 支持有注解的配置 -->
 	<mvc:default-servlet-handler/>	<!-- 之前配置有一个DispathcerServlet控制 -->
 	
+	<!-- 进行*.properties资源配置，资源文件一定要保存在CLASSPATH之中 -->
+	<bean id="messageSource" 
+		class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basenames">	<!-- 定义资源的名称 -->
+			<array>
+				<value>cn.mldn.message.pages</value>
+				<value>cn.mldn.message.messages</value>
+			</array>
+		</property>
+	</bean>
+	
 	<!-- 定义一个页面资源的解析器 -->
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/pages/"/>

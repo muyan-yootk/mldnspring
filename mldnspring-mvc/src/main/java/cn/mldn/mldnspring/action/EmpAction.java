@@ -45,7 +45,8 @@ public class EmpAction extends AbstractAction {
 	
 	@GetMapping("input")
 	public String input() {
-		return "emp/input" ; 
+		System.out.println(super.getMessage("welcome.info", "MLDN")); 
+		return super.getMessage("emp.input.page") ; 
 	}
 	@PostMapping("show")
 	@ResponseBody
