@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/mvc 
+		http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
+		http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+		http://www.springframework.org/schema/context 
+		http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+	<!-- 在编写之中所有的控制器都一定要在action父包下面，里面可以任意定义子包，例如：action.front、action.back -->
+	<context:component-scan base-package="cn.mldn.mldnspring.action" />
+	<mvc:annotation-driven/>	<!-- 支持有注解的配置 -->
+	<mvc:default-servlet-handler/>	<!-- 之前配置有一个DispathcerServlet控制 -->
+</beans>

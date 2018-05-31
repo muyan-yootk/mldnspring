@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:task="http://www.springframework.org/schema/task"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-4.3.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">  
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+		<property name="driverClass" value="${datasource.driverclass}"/>
+		<property name="jdbcUrl" value="${datasource.jdbcurl}"/>
+		<property name="user" value="${datasource.user}"/>
+		<property name="password" value="${datasource.password}"/>
+		<property name="maxPoolSize" value="${datasource.maxpoolsize}"/>
+		<property name="initialPoolSize" value="${datasource.initialpoolsize}"/>
+		<property name="minPoolSize" value="${datasource.minpoolsize}"/>
+		<property name="maxIdleTime" value="${datasource.maxidletime}"/>
+	</bean>
+
+
+	<!-- JdbcTemplate是Spring提供的JDBC操作模版，利用此模版可以轻松实现CRUD处理 -->
+	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource" ref="dataSource"/>	<!-- 配置要使用的数据源 -->
+	</bean>
+	<!-- <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="${database.driver}"/>
+		<property name="url" value="${database.url}"/>
+		<property name="username" value="${database.username}"/>
+		<property name="password" value="${database.password}"/>
+	</bean> -->
+</beans>
