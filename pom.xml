@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
@@ -18,7 +19,7 @@
 		<maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
 		<!-- 以下为依赖包版本定义属性 -->
 		<junit.version>4.12</junit.version>
-		<spring.version>5.0.3.RELEASE</spring.version>
+		<spring.version>5.0.6.RELEASE</spring.version>
 		<servlet.version>4.0.1</servlet.version>
 		<jsp.version>2.2</jsp.version>
 		<jstl.version>1.2</jstl.version>
@@ -26,9 +27,111 @@
 		<quartz.version>2.3.0</quartz.version>
 		<activemq.version>5.15.4</activemq.version>
 		<jms.version>1.1</jms.version>
+		<mldnspring.version>0.0.1</mldnspring.version>
+		<cxf.version>3.2.4</cxf.version>
+		<mysql.version>5.0.8</mysql.version>
+		<c3p0.version>0.9.5.2</c3p0.version>
+		<log4j.version>2.11.0</log4j.version>
+		<slf4j.version>1.7.25</slf4j.version>
+		<jackson.version>2.9.5</jackson.version>
+	<fileupload.version>1.3.3</fileupload.version>
+	<commons-io.version>2.6</commons-io.version>
 	</properties>
 	<dependencyManagement>
 		<dependencies>
+	<dependency>
+		<groupId>commons-io</groupId>
+		<artifactId>commons-io</artifactId>
+		<version>${commons-io.version}</version>
+	</dependency>
+	<dependency>
+		<groupId>commons-fileupload</groupId>
+		<artifactId>commons-fileupload</artifactId>
+		<version>${fileupload.version}</version>
+	</dependency>
+
+
+			<dependency>
+				<groupId>com.fasterxml.jackson.core</groupId>
+				<artifactId>jackson-core</artifactId>
+				<version>${jackson.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.fasterxml.jackson.core</groupId>
+				<artifactId>jackson-databind</artifactId>
+				<version>${jackson.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.fasterxml.jackson.core</groupId>
+				<artifactId>jackson-annotations</artifactId>
+				<version>${jackson.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.apache.logging.log4j</groupId>
+				<artifactId>log4j-core</artifactId>
+				<version>${log4j.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>slf4j-api</artifactId>
+				<version>${slf4j.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>slf4j-log4j12</artifactId>
+				<version>${slf4j.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-web</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-webmvc</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+
+
+			<dependency>
+				<groupId>com.mchange</groupId>
+				<artifactId>c3p0</artifactId>
+				<version>${c3p0.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>mysql</groupId>
+				<artifactId>mysql-connector-java</artifactId>
+				<version>${mysql.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-jdbc</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.apache.cxf</groupId>
+				<artifactId>cxf-rt-frontend-jaxws</artifactId>
+				<version>${cxf.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.cxf</groupId>
+				<artifactId>cxf-rt-transports-http</artifactId>
+				<version>${cxf.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.cxf</groupId>
+				<artifactId>cxf-rt-transports-http-jetty</artifactId>
+				<version>${cxf.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>cn.mldn</groupId>
+				<artifactId>mldnspring-ws-api</artifactId>
+				<version>${mldnspring.version}</version>
+			</dependency>
 			<dependency>
 				<groupId>org.apache.activemq</groupId>
 				<artifactId>activemq-all</artifactId>
@@ -44,6 +147,17 @@
 				<artifactId>spring-jms</artifactId>
 				<version>${spring.version}</version>
 			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-aop</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-aspects</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+
 
 			<dependency>
 				<groupId>junit</groupId>
@@ -126,7 +240,6 @@
 	</build>
 	<modules>
 		<module>mldnspring-base</module>
-		<module>mldnspring-activemq-send</module>
-		<module>mldnspring-activemq-client</module>
+		<module>mldnspring-mvc</module>
 	</modules>
 </project>

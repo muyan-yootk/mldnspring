@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/mvc 
+		http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
+		http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+		http://www.springframework.org/schema/context 
+		http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+	<!-- 在编写之中所有的控制器都一定要在action父包下面，里面可以任意定义子包，例如：action.front、action.back -->
+	<context:component-scan base-package="cn.mldn.mldnspring.action" />
+	<mvc:annotation-driven/>	<!-- 支持有注解的配置 -->
+	<mvc:default-servlet-handler/>	<!-- 之前配置有一个DispathcerServlet控制 -->
+	
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<!-- 设置所有上传内容的最大字节数量，本次最多允许上传5M的内容 -->
+		<property name="maxUploadSize" value="5242880"/>
+		<!-- 设置每一个文件的最大上传量，本次设置为2M -->	
+		<property name="maxUploadSizePerFile" value="2097152"/>
+		<!-- 设置允许占用的内存最大字节数，本次设置为10M -->
+		<property name="maxInMemorySize" value="10485760"/>	
+	</bean>
+	
+	<!-- 定义上传出现错误之后的跳转路径 -->
+	<bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+		<property name="exceptionMappings">	<!-- 进行异常处理的映射 -->
+			<props>
+				<prop key="org.springframework.web.multipart.MaxUploadSizeExceededException">
+					plugins/errors
+				</prop>
+			</props>		
+		</property>	
+	</bean>
+	
+	<!-- 进行*.properties资源配置，资源文件一定要保存在CLASSPATH之中 -->
+	<bean id="messageSource" 
+		class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basenames">	<!-- 定义资源的名称 -->
+			<array>
+				<value>cn.mldn.message.pages</value>
+				<value>cn.mldn.message.messages</value>
+			</array>
+		</property>
+	</bean>
+	
+	<!-- 定义一个页面资源的解析器 -->
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/pages/"/>
+		<property name="suffix" value=".jsp"/>
+	</bean>  
+	
+	<mvc:resources location="/WEB-INF/js/" mapping="/mvcjs/**"/>
+	<mvc:resources location="/WEB-INF/images/" mapping="/mvcimages/**"/>
+	<mvc:resources location="/WEB-INF/css/" mapping="/mvccss/**"/> 
+</beans>
