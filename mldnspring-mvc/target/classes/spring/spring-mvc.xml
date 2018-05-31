@@ -15,6 +15,26 @@
 	<mvc:annotation-driven/>	<!-- 支持有注解的配置 -->
 	<mvc:default-servlet-handler/>	<!-- 之前配置有一个DispathcerServlet控制 -->
 	
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<!-- 设置所有上传内容的最大字节数量，本次最多允许上传5M的内容 -->
+		<property name="maxUploadSize" value="5242880"/>
+		<!-- 设置每一个文件的最大上传量，本次设置为2M -->	
+		<property name="maxUploadSizePerFile" value="2097152"/>
+		<!-- 设置允许占用的内存最大字节数，本次设置为10M -->
+		<property name="maxInMemorySize" value="10485760"/>	
+	</bean>
+	
+	<!-- 定义上传出现错误之后的跳转路径 -->
+	<bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+		<property name="exceptionMappings">	<!-- 进行异常处理的映射 -->
+			<props>
+				<prop key="org.springframework.web.multipart.MaxUploadSizeExceededException">
+					plugins/errors
+				</prop>
+			</props>		
+		</property>	
+	</bean>
+	
 	<!-- 进行*.properties资源配置，资源文件一定要保存在CLASSPATH之中 -->
 	<bean id="messageSource" 
 		class="org.springframework.context.support.ResourceBundleMessageSource">
