@@ -14,4 +14,14 @@
 	<context:component-scan base-package="cn.mldn.mldnspring.action" />
 	<mvc:annotation-driven/>	<!-- 支持有注解的配置 -->
 	<mvc:default-servlet-handler/>	<!-- 之前配置有一个DispathcerServlet控制 -->
+	
+	<!-- 定义一个页面资源的解析器 -->
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/pages/"/>
+		<property name="suffix" value=".jsp"/>
+	</bean>  
+	
+	<mvc:resources location="/WEB-INF/js/" mapping="/mvcjs/**"/>
+	<mvc:resources location="/WEB-INF/images/" mapping="/mvcimages/**"/>
+	<mvc:resources location="/WEB-INF/css/" mapping="/mvccss/**"/> 
 </beans>

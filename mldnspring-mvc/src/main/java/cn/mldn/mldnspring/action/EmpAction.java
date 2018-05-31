@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 import cn.mldn.mldnspring.vo.Emp;
 import cn.mldn.util.action.AbstractAction;
@@ -44,7 +45,7 @@ public class EmpAction extends AbstractAction {
 	
 	@GetMapping("input")
 	public String input() {
-		return "/pages/emp/input.jsp" ; 
+		return "emp/input" ; 
 	}
 	@PostMapping("show")
 	@ResponseBody

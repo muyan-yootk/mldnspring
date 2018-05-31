@@ -29,6 +29,7 @@
 	<servlet-mapping>
 		<servlet-name>SpringMVCServlet</servlet-name>
 		<url-pattern>*.action</url-pattern>
+		<url-pattern>/</url-pattern>
 	</servlet-mapping>
 	<!-- 4、设置统一的编码过滤器 -->
 	<filter>
