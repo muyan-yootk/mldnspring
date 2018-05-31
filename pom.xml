@@ -30,19 +30,26 @@
 		<mldnspring.version>0.0.1</mldnspring.version>
 		<cxf.version>3.2.4</cxf.version>
 		<mysql.version>5.0.8</mysql.version>
+		<c3p0.version>0.9.5.2</c3p0.version>
 	</properties>
 	<dependencyManagement>
 		<dependencies>
-	<dependency>
-		<groupId>mysql</groupId>
-		<artifactId>mysql-connector-java</artifactId>
-		<version>${mysql.version}</version>
-	</dependency>
-	<dependency>
-	    <groupId>org.springframework</groupId>
-	    <artifactId>spring-jdbc</artifactId>
-	    <version>${spring.version}</version>
-	</dependency>
+			<dependency>
+				<groupId>com.mchange</groupId>
+				<artifactId>c3p0</artifactId>
+				<version>${c3p0.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>mysql</groupId>
+				<artifactId>mysql-connector-java</artifactId>
+				<version>${mysql.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-jdbc</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
 
 			<dependency>
 				<groupId>org.apache.cxf</groupId>

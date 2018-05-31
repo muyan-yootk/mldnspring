@@ -11,14 +11,27 @@
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">  
 	<context:component-scan base-package="cn.mldn.mldnspring"/>	<!-- 定义扫描包 -->
 	<context:property-placeholder location="classpath:config/*.properties"/>
+	
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+		<property name="driverClass" value="${datasource.driverclass}"/>
+		<property name="jdbcUrl" value="${datasource.jdbcurl}"/>
+		<property name="user" value="${datasource.user}"/>
+		<property name="password" value="${datasource.password}"/>
+		<property name="maxPoolSize" value="${datasource.maxpoolsize}"/>
+		<property name="initialPoolSize" value="${datasource.initialpoolsize}"/>
+		<property name="minPoolSize" value="${datasource.minpoolsize}"/>
+		<property name="maxIdleTime" value="${datasource.maxidletime}"/>
+	</bean>
+
+
 	<!-- JdbcTemplate是Spring提供的JDBC操作模版，利用此模版可以轻松实现CRUD处理 -->
 	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
 		<property name="dataSource" ref="dataSource"/>	<!-- 配置要使用的数据源 -->
 	</bean>
-	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+	<!-- <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="${database.driver}"/>
 		<property name="url" value="${database.url}"/>
 		<property name="username" value="${database.username}"/>
 		<property name="password" value="${database.password}"/>
-	</bean>
+	</bean> -->
 </beans>
