@@ -13,7 +13,20 @@
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">  
 	<context:component-scan base-package="cn.mldn.mldnspring"/>	<!-- 定义扫描包 -->
 	<tx:annotation-driven transaction-manager="transactionManager"/>
-	
+	<tx:advice id="txAdvice" transaction-manager="transactionManager">
+		<tx:attributes>	<!-- 定义事务的相关的配置属性 -->
+			<tx:method name="add*" propagation="REQUIRED"/>		
+			<tx:method name="edit*" propagation="REQUIRED"/>		
+			<tx:method name="remove*" propagation="REQUIRED"/>		
+			<tx:method name="list*" propagation="REQUIRED" read-only="true"/>		
+			<tx:method name="get*" propagation="REQUIRED" read-only="true"/>		
+		</tx:attributes>
+	</tx:advice>
+	<!-- 随后需要为项目配置有一个切面，而切面就需要通过AOP技术指派 -->
+	<aop:config>
+		<aop:pointcut expression="execution(public * cn.mldn..service..*.*(..))" id="servicePointcut"/>
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="servicePointcut"/>
+	</aop:config>
 	<context:property-placeholder location="classpath:config/*.properties"/>
 	<!-- 定义事务处理子类，该事务处理主要是针对于数据源完成的控制 -->
 	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
