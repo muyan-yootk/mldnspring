@@ -1,18 +1,15 @@
 package cn.mldn.mldnspring.action;
 
 import javax.servlet.ServletContext;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 import cn.mldn.mldnspring.vo.Emp;
 import cn.mldn.util.action.AbstractAction;
@@ -51,7 +48,10 @@ public class EmpAction extends AbstractAction {
 	}
 	@PostMapping("show")
 	@ResponseBody
-	public Object show(Emp emp) {
+	public Object show(Emp emp,MultipartFile photo) {
+		if (photo != null) {
+			System.out.println("【上传照片】" + photo.getContentType() + "、" + photo.getName());
+		}
 		return emp ;  
 	}  
 }
