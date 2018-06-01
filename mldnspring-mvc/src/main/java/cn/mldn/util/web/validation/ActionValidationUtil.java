@@ -125,7 +125,7 @@ public class ActionValidationUtil {
 		String paramValue = this.request.getParameter(paramName) ;
 		if (paramValue == null || "".equals(paramValue)) {
 			return false ;
-		}
+		} 
 		return true ;
 	}
 	/**
