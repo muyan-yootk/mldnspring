@@ -8,8 +8,7 @@
 <body>
 <%
 	String show_url = "pages/emp/show.action" ;
-%>
-<img src="mvcimages/dandan.gif">
+%> 
 <form action="<%=show_url%>" method="post">
 	雇员编号：	<input type="text" name="empno" value="7369"><br>
 	雇员姓名：	<input type="text" name="ename" value="小高不高"><br>
