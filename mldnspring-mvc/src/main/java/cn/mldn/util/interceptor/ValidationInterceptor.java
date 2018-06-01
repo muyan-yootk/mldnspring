@@ -10,7 +10,11 @@ import org.springframework.context.MessageSource;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
 
+import cn.mldn.util.web.BasePathUtil;
+import cn.mldn.util.web.validation.ActionValidationUtil;
+
 public class ValidationInterceptor implements HandlerInterceptor {
+	private static final String ERROR_PAGE = "error.page" ;
 	@Autowired
 	private MessageSource messageSource ;	// 注入资源读取类对象
 	private Logger logger = LoggerFactory.getLogger(ValidationInterceptor.class) ;	// 日志对象
@@ -26,7 +30,23 @@ public class ValidationInterceptor implements HandlerInterceptor {
 				validationRule = this.messageSource.getMessage(validationKey, null, null) ;
 			} catch (Exception e) {}
 			if (validationRule != null) {	// 程序里面需要进行验证处理
-				 this.logger.info(validationRule);
+//				this.logger.info(validationRule);
+				ActionValidationUtil avu = new ActionValidationUtil(request, this.messageSource, validationRule) ;
+				if (avu.getErrors().size() > 0) {	// 此时出现了错误的信息，跳转到错误页
+					String errorPageKey = validationKey + ".error.page" ;
+					String errorPage = null ;	// 保存错误页的路径
+					try {	// 获取每个Action执行方法具体的错误页
+						errorPage = this.messageSource.getMessage(errorPageKey, null, null) ;
+					} catch (Exception e) {	// 获取全局错误页
+						errorPage = this.messageSource.getMessage(ERROR_PAGE, null, null) ;
+					}
+					if ("POST".equals(request.getMethod())) {	// 现在是一个POST请求
+						response.sendRedirect(BasePathUtil.getBasePath() + errorPage);
+					} else {
+						request.getRequestDispatcher(errorPage).forward(request, response);
+					}
+					return false ; // 进行拦截处理
+				}
 			}
 		} 
 		return true ;	// 如果返回true则表示继续向后执行后续的Action，如果是false表示不执行Action

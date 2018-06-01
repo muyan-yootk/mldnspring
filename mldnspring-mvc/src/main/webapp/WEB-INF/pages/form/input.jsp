@@ -17,9 +17,9 @@
 				<option value="2">延迟</option>
 			</select><br>
 	发送日期：	<input type="text" name="pubdate" value="2025-12-11"><br>
-	消息标签：	<input type="checkbox" name="tags" value="政治">政治
-			<input type="checkbox" name="tags" value="经济">经济
-			<input type="checkbox" name="tags" value="文化">文化
+	消息标签：	<input type="checkbox" name="tags" value="1">政治
+			<input type="checkbox" name="tags" value="2">经济
+			<input type="checkbox" name="tags" value="3">文化
 	<button type="submit">发送</button>
 </form>
 </body>
