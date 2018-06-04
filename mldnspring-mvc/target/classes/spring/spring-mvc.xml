@@ -14,6 +14,13 @@
 	<context:component-scan base-package="cn.mldn.mldnspring.action" />
 	<mvc:annotation-driven/>	<!-- 支持有注解的配置 -->
 	<mvc:default-servlet-handler/>	<!-- 之前配置有一个DispathcerServlet控制 -->
+	<mvc:interceptors>	<!-- 这里面可以配置若干个拦截器 -->
+		<mvc:interceptor>	<!-- 配置一个拦截器 -->
+			<mvc:mapping path="/pages/**/*.action"/>
+			<bean class="cn.mldn.util.interceptor.ValidationInterceptor"/>
+		</mvc:interceptor>
+	</mvc:interceptors>
+	
 	
 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<!-- 设置所有上传内容的最大字节数量，本次最多允许上传5M的内容 -->
@@ -42,6 +49,7 @@
 			<array>
 				<value>cn.mldn.message.pages</value>
 				<value>cn.mldn.message.messages</value>
+				<value>cn.mldn.message.validations</value>
 			</array>
 		</property>
 	</bean>
